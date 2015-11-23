@@ -4,3 +4,4 @@
 
 [aliases]
 	c = commit
+	po = push origin master
