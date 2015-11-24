@@ -54,6 +54,19 @@ plugins=(git)
 # User configuration
 
 export PATH=$PATH:"/Users/$USER/.composer/vendor/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/$USER/.rvm/gems/ruby-2.2.1/bin:/Users/$USER/.rvm/gems/ruby-2.2.1@global/bin:/Users/$USER/.rvm/rubies/ruby-2.2.1/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/$USER/bin:/Users/$USER/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin"
+
+# rake task shortcut
+alias rake="noglob rake"
+
+# genghis db
+alias sshDB="ssh -L 27018:localhost:27017 devcon"
+
+# Environment Variables
+export DESK_USERNAME=wyattsweet@gmail.com
+export DESK_PASSWORD=BrasilJanuary2013!
+
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
