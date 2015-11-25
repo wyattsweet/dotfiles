@@ -13,3 +13,6 @@ set softtabstop=2
 
 " turn off parenthesis matching
 :let loaded_matchparen = 1
+
+"turn on line number
+set number
