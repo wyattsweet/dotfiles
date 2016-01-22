@@ -1,14 +1,10 @@
 syntax on
 colorscheme 256-jungle
 
-" size of a hard tabstop
-set tabstop=2
+filetype plugin indent on
 
-" size of an "indent"
+set expandtab
 set shiftwidth=2
-
-" a combination of spaces and tabs are used to simulate tab stops at a width
-" other than the (hard)tabstop
 set softtabstop=2
 
 " turn off parenthesis matching
@@ -16,3 +12,6 @@ set softtabstop=2
 
 "turn on line number
 set number
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
