@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " plugin from Github user/repo
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-scripts/closetag.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
