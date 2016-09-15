@@ -47,3 +47,5 @@ set number
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+"NERDTree settings
+let g:NERDTreeWinSize=60
