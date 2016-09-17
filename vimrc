@@ -11,6 +11,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " plugin from Github user/repo
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'scrooloose/nerdtree'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -34,6 +37,7 @@ filetype plugin indent on
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set backspace=indent,eol,start
 
 " turn off parenthesis matching
 :let loaded_matchparen = 1
@@ -43,3 +47,5 @@ set number
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+"NERDTree settings
+let g:NERDTreeWinSize=60
