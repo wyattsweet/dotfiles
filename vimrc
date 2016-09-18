@@ -30,7 +30,7 @@ filetype plugin on
 " Put your non-Plugin stuff after this line
 
 syntax on
-colorscheme 256-jungle
+colorscheme desert 
 
 filetype plugin indent on
 
@@ -49,3 +49,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "NERDTree settings
 let g:NERDTreeWinSize=60
+
+" Auto open
+au VimEnter *  NERDTree
+
