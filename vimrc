@@ -49,8 +49,12 @@ set number
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "NERDTree settings
+
+"NERDTree width
 let g:NERDTreeWinSize=60
 "Auto open
 au VimEnter * NERDTree
 "Show hidden files
 let NERDTreeShowHidden=1
+
+
