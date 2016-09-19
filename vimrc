@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Townk/vim-autoclose'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -30,7 +31,7 @@ filetype plugin on
 " Put your non-Plugin stuff after this line
 
 syntax on
-colorscheme 256-jungle
+colorscheme desert 
 
 filetype plugin indent on
 
@@ -49,3 +50,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "NERDTree settings
 let g:NERDTreeWinSize=60
+"Auto open
+au VimEnter * NERDTree
+"Show hidden files
+let NERDTreeShowHidden=1
