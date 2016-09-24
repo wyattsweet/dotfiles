@@ -11,10 +11,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " plugin from Github user/repo
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'vim-scripts/closetag.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Townk/vim-autoclose'
 Plugin 'ervandew/supertab'
+Plugin 'Townk/vim-autoclose'
+Plugin 'alvan/vim-closetag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,6 +49,8 @@ set number
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+au BufRead,BufNewFile *.ejs setfiletype html
+
 "NERDTree settings
 
 "NERDTree width
@@ -58,4 +60,7 @@ au VimEnter * NERDTree
 "Show hidden files
 let NERDTreeShowHidden=1
 
+
+" Vim-close tag setting
+let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml"
 
