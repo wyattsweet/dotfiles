@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
