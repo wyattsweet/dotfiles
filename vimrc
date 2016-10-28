@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin from Github user/repo
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'ervandew/supertab'
 Plugin 'Townk/vim-autoclose'
 Plugin 'alvan/vim-closetag'
