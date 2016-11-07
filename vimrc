@@ -16,6 +16,8 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'ervandew/supertab'
 Plugin 'Townk/vim-autoclose'
 Plugin 'alvan/vim-closetag'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,5 +68,5 @@ let NERDTreeShowHidden=1
 
 
 " Vim-close tag setting
-let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml"
+let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx"
 
