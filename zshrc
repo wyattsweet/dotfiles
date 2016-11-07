@@ -69,11 +69,6 @@ alias sshDB="ssh -L 27018:localhost:27017 devcon"
 # git aliases
 alias gpom="git push origin master" 
 # Environment Variables
-export DESK_USERNAME=wyattsweet@gmail.com
-export DESK_PASSWORD=BrasilJanuary2013!
-
-
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
