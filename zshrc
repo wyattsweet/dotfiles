@@ -68,6 +68,9 @@ alias sshDB="ssh -L 27018:localhost:27017 devcon"
 
 # git aliases
 alias gpom="git push origin master" 
+
+alias sr="redis-server /usr/local/etc/redis.conf"
+
 # Environment Variables
 # export MANPATH="/usr/local/man:$MANPATH"
 
