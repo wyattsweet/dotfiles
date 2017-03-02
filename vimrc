@@ -74,6 +74,3 @@ let NERDTreeShowHidden=1
 
 " Vim-close tag setting
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx"
-
-" Livedown
-let g:livedown_autorun = 0
