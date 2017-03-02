@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
+Plugin 'shime/vim-livedown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,3 +75,5 @@ let NERDTreeShowHidden=1
 " Vim-close tag setting
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx"
 
+" Livedown
+let g:livedown_autorun = 0
