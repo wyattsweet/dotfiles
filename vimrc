@@ -64,7 +64,7 @@ au BufRead,BufNewFile *.ejs setfiletype html
 "NERDTree settings
 
 "NERDTree width
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=30
 "Auto open
 au VimEnter * NERDTree
 "Show hidden files
