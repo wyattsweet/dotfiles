@@ -52,6 +52,8 @@ set backspace=indent,eol,start
 
 set guifont=Monaco:h12
 
+let g:jsx_ext_required = 0
+
 " turn off parenthesis matching
 :let loaded_matchparen = 1
 
