@@ -75,4 +75,4 @@ let NERDTreeShowHidden=1
 
 
 " Vim-close tag setting
-let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx"
+let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js"
