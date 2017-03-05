@@ -5,7 +5,7 @@ export ZSH=/Users/$USER/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jreese"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,7 +50,7 @@ ZSH_THEME="jreese"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
+plugins+=(zsh-nvm)
 # User configuration
 
 export PATH=$PATH:"/Users/$USER/.composer/vendor/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/$USER/.rvm/gems/ruby-2.2.1/bin:/Users/$USER/.rvm/gems/ruby-2.2.1@global/bin:/Users/$USER/.rvm/rubies/ruby-2.2.1/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/$USER/bin:/Users/$USER/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin"
