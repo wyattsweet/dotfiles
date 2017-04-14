@@ -75,6 +75,7 @@ alias sr="redis-server /usr/local/etc/redis.conf"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 # Yo
 # may need to manually set your language environment
