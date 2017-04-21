@@ -53,7 +53,7 @@ plugins=(git)
 plugins+=(zsh-nvm)
 # User configuration
 
-export PATH=$PATH:"/Users/$USER/.composer/vendor/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/$USER/.rvm/gems/ruby-2.2.1/bin:/Users/$USER/.rvm/gems/ruby-2.2.1@global/bin:/Users/$USER/.rvm/rubies/ruby-2.2.1/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/$USER/bin:/Users/$USER/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin"
+#export PATH=$PATH:"/Users/$USER/.composer/vendor/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/$USER/.rvm/gems/ruby-2.2.1/bin:/Users/$USER/.rvm/gems/ruby-2.2.1@global/bin:/Users/$USER/.rvm/rubies/ruby-2.2.1/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/$USER/bin:/Users/$USER/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin"
 
 #export PATH="$PATH:/home/usr/bin"
 
@@ -75,7 +75,6 @@ alias sr="redis-server /usr/local/etc/redis.conf"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 # Yo
 # may need to manually set your language environment
