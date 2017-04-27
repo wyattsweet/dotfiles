@@ -78,3 +78,4 @@ let NERDTreeShowHidden=1
 " Vim-close tag setting
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js"
 
+let g:ctrlp_max_files=0
