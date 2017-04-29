@@ -79,3 +79,9 @@ let NERDTreeShowHidden=1
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js"
 
 let g:ctrlp_max_files=0
+
+" ctrlP opens file in a new tab
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
