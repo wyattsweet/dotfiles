@@ -74,6 +74,8 @@ au VimEnter * NERDTree
 "Show hidden files
 let NERDTreeShowHidden=1
 
+" Open new files in tabs by default
+let NERDTreeMapOpenInTab='<ENTER>'
 
 " Vim-close tag setting
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js"
@@ -85,3 +87,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+
+" The Port Livedown runs on
+let g:livedown_port = 1337
