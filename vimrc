@@ -25,6 +25,7 @@ Plugin 'shime/vim-livedown'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -76,6 +77,9 @@ let NERDTreeShowHidden=1
 
 " Open new files in tabs by default
 let NERDTreeMapOpenInTab='<ENTER>'
+
+" Allow Airline to open in new tabs
+set laststatus=2
 
 " Vim-close tag setting
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js"
