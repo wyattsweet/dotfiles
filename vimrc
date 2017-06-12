@@ -26,6 +26,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-obsession'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -75,8 +76,8 @@ au VimEnter * NERDTree
 "Show hidden files
 let NERDTreeShowHidden=1
 
-" Open new files in tabs by default
-let NERDTreeMapOpenInTab='<ENTER>'
+" Enter opens a new file in a tab from nerdtree
+" let NERDTreeMapOpenInTab='<ENTER>'
 
 " Allow Airline to open in new tabs
 set laststatus=2
@@ -98,3 +99,7 @@ let g:livedown_port = 1337
 let g:ack_mappings = {
       \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
       \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
+
+" Invoke CtrlP by pressing ctrl + p
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
