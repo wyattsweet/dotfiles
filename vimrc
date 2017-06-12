@@ -96,10 +96,10 @@ let g:ctrlp_prompt_mappings = {
 " The Port Livedown runs on
 let g:livedown_port = 1337
 
-let g:ack_mappings = {
-      \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
-      \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
-
 " Invoke CtrlP by pressing ctrl + p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+let g:ack_mappings = {
+      \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
+      \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
