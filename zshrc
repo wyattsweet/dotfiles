@@ -60,15 +60,8 @@ plugins+=(zsh-nvm)
 #export PATH="/usr/local/lib/node_modules/npm"
 
 export PATH=/usr/local/bin:$PATH
-# rake task shortcut
-alias rake="noglob rake"
 
-# genghis db
-alias sshDB="ssh -L 27018:localhost:27017 devcon"
-
-# git aliases
 alias gpom="git push origin master" 
-
 alias sr="redis-server /usr/local/etc/redis.conf"
 alias audio="cd /Volumes/Wyatt\'s\ Audio/"
 
