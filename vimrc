@@ -87,18 +87,21 @@ let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js"
 
 let g:ctrlp_max_files=0
 
+let g:ctrlp_max_height=20
+
 " ctrlP opens file in a new tab
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 
-" The Port Livedown runs on
-let g:livedown_port = 1337
-
 " Invoke CtrlP by pressing ctrl + p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" The Port Livedown runs on
+let g:livedown_port = 1337
+
 
 let g:ack_mappings = {
       \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
