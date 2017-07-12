@@ -27,6 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-obsession'
+Plugin 'dracula/vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -43,9 +44,8 @@ filetype plugin on
 " Put your non-Plugin stuff after this line
 
 syntax enable 
-set background=dark
-colorscheme material-theme 
-
+syntax on
+color dracula
 filetype plugin indent on
 
 set expandtab
@@ -71,8 +71,10 @@ au BufRead,BufNewFile *.ejs setfiletype html
 
 "NERDTree width
 let g:NERDTreeWinSize=30
-"Auto open
-au VimEnter * NERDTree
+
+"Auto open NERDTree
+"au VimEnter * NERDTree
+
 "Show hidden files
 let NERDTreeShowHidden=1
 
