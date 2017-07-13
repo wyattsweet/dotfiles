@@ -104,6 +104,10 @@ let g:ctrlp_cmd = 'CtrlP'
 " The Port Livedown runs on
 let g:livedown_port = 1337
 
+let g:airline#extensions#tabline#enabled = 1 
+
+" Just show the filename (no path) in the tab
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:ack_mappings = {
       \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
