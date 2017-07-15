@@ -48,6 +48,9 @@ syntax on
 color dracula
 filetype plugin indent on
 
+" automatically set hidden bufers
+set hidden
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -92,10 +95,10 @@ let g:ctrlp_max_files=0
 let g:ctrlp_max_height=20
 
 " ctrlP opens file in a new tab
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+" let g:ctrlp_prompt_mappings = {
+"     \ 'AcceptSelection("e")': ['<c-t>'],
+"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+"     \ }
 
 " Invoke CtrlP by pressing ctrl + p
 let g:ctrlp_map = '<c-p>'
