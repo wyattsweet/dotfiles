@@ -51,6 +51,10 @@ filetype plugin indent on
 " automatically set hidden bufers
 set hidden
 
+" map buffer previous & buffer next
+map bp :bp<cr>
+map bn :bn<cr>
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
