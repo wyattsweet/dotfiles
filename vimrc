@@ -29,6 +29,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'dracula/vim'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'sbdchd/neoformat'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -116,6 +117,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Just show the filename (no path) in the tab
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Run Neoformat automatically on save
+autocmd BufWritePre *.js Neoformat
 
 let g:ack_mappings = {
       \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
