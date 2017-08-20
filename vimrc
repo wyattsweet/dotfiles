@@ -121,6 +121,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Run Neoformat automatically on save
 autocmd BufWritePre *.js Neoformat
 
+" Nerformat config
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
+
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
+
 let g:ack_mappings = {
       \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
       \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
