@@ -118,21 +118,14 @@ let g:airline#extensions#tabline#enabled = 1
 " Just show the filename (no path) in the tab
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" Let Neoformat use Vim's formatprg
-let g:neoformat_try_formatprg = 1
+" Run Neoformat automatically on save
+autocmd BufWritePre *.jsx Neoformat
 
-augroup NeoformatAutoFormat
-  autocmd!
-  " Nerformat config
-  autocmd FileType javascript setlocal formatprg=prettier\
-                                      \--stdin\
-                                      \--parser\ flow\
-                                      \--single-quote\
-                                      \--trailing-comma\ none\
-                                      \--print-width\ 100
-  " Run Neoformat automatically on save
-  autocmd BufWritePre *.js,*.jsx Neoformat
-augroup END
+" Nerformat config
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
+
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
 
 " auto update file when it changes
 set autoread
