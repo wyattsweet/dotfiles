@@ -61,9 +61,7 @@ plugins+=(zsh-nvm)
 
 export PATH=/usr/local/bin:$PATH
 
-alias gpom="git push origin master" 
 alias sr="redis-server /usr/local/etc/redis.conf"
-alias audio="cd /Volumes/Wyatt\'s\ Audio/"
 
 # Environment Variables
 # export MANPATH="/usr/local/man:$MANPATH"

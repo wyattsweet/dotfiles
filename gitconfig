@@ -5,3 +5,5 @@
 [aliases]
 	c = commit
 	po = push origin master
+[core]
+	excludesfile = /Users/wyattsweet/.gitignore
