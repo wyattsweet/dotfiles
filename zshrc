@@ -53,11 +53,7 @@ plugins=(git)
 plugins+=(zsh-nvm)
 # User configuration
 
-#export PATH=$PATH:"/Users/$USER/.composer/vendor/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/$USER/.rvm/gems/ruby-2.2.1/bin:/Users/$USER/.rvm/gems/ruby-2.2.1@global/bin:/Users/$USER/.rvm/rubies/ruby-2.2.1/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/$USER/bin:/Users/$USER/.rvm/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin"
-
 #export PATH="$PATH:/home/usr/bin"
-
-#export PATH="/usr/local/lib/node_modules/npm"
 
 export PATH=/usr/local/bin:$PATH
 
@@ -90,10 +86,6 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-#bindkey
-bindkey "OD" backward-word
-bindkey "OC" forward-word
+# PERSONAL ALIASES
+#
+alias mvim="open -a MacVim.app $1"
