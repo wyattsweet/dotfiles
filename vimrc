@@ -62,12 +62,13 @@ set shiftwidth=2
 set softtabstop=2
 set backspace=indent,eol,start
 
-set guifont=Monaco:h12
+set guifont=Monaco:h15
 
+" enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
 
 " turn off parenthesis matching
-:let loaded_matchparen = 1
+" :let loaded_matchparen = 1
 
 "turn on line number
 set number

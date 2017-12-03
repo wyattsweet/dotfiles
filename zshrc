@@ -89,4 +89,4 @@ source $ZSH/oh-my-zsh.sh
 # PERSONAL ALIASES
 #
 alias mvim="open -a MacVim.app $1"
-alias code="cd $HOME/code"
+alias c="cd $HOME/code"
