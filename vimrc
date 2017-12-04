@@ -21,7 +21,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
-Plugin 'shime/vim-livedown'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -30,6 +29,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'dracula/vim'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'sbdchd/neoformat'
+Plugin 'matze/vim-move'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -62,7 +62,7 @@ set shiftwidth=2
 set softtabstop=2
 set backspace=indent,eol,start
 
-set guifont=Monaco:h15
+set guifont=Monaco:h13
 
 " enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
@@ -130,6 +130,9 @@ let g:neoformat_try_formatprg = 1
 
 " auto update file when it changes
 set autoread
+
+" change vim-move modifier key
+let g:move_key_modifier = 'C'
 
 let g:ack_mappings = {
       \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
