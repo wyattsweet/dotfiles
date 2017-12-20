@@ -120,7 +120,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Run Neoformat automatically on save
-autocmd BufWritePre *.jsx Neoformat
+autocmd BufWritePre {*.jsx,*.js} Neoformat
 
 " Nerformat config
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
