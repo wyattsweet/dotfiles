@@ -28,8 +28,9 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'dracula/vim'
 Plugin 'qpkorr/vim-bufkill'
-Plugin 'sbdchd/neoformat'
 Plugin 'matze/vim-move'
+Plugin 'w0rp/ale'
+Plugin 'prettier/vim-prettier'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -119,11 +120,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Just show the filename (no path) in the tab
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" Run Neoformat automatically on save
-autocmd BufWritePre {*.jsx,*.js} Neoformat
-
 " Nerformat config
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
+" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
+
+" vim-prettier, run async (before saving)
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
