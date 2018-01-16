@@ -63,7 +63,6 @@ set shiftwidth=2
 set softtabstop=2
 set backspace=indent,eol,start
 
-set guifont=Monaco:h13
 
 " enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
@@ -142,3 +141,8 @@ let g:ack_mappings = {
 
 " removes scroll bar in macvim
 set guioptions=aem
+set guifont=Monaco:h13m
+
+" automatically turns on spellcheck for Markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell
+
