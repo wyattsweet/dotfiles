@@ -126,6 +126,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 
+" Don't print semicolons
+let g:prettier#config#semi = 'false'
+
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
 
