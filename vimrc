@@ -62,6 +62,8 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set backspace=indent,eol,start
+" break lines on word
+set linebreak
 
 
 " enables jsx in .jsx and .js file extensions
