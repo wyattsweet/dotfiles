@@ -130,6 +130,8 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " Don't print semicolons
 let g:prettier#config#semi = 'false'
+" no trailing commas
+let g:prettier#config#trailing_comma = 'none'
 
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
