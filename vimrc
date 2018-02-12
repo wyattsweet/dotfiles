@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
 Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -31,6 +31,9 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'matze/vim-move'
 Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
+Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -153,3 +156,8 @@ set guifont=Monaco:h13m
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 
+let g:UltiSnipsExpandTrigger="<c-f>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir="~/.vim/mysnips"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
