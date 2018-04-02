@@ -1,0 +1,17 @@
+# bold
+snippet b
+**${1:text}**
+endsnippet
+
+# header
+snippet header
+---
+{
+  "title": "$1",
+  "author": "Wyatt Sweet",
+  "tags": [$2],
+  "date": `date +%Y-%m-%d`,
+  "published": false
+}
+---
+endsnippet

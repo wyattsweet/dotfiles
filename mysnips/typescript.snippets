@@ -1,0 +1,29 @@
+extends javascript
+
+snippet reactclass
+import * as React from 'react'
+
+class $1 extends React.Component {
+  constructor() {
+    super()
+  }
+
+  render() {
+    $2
+  }
+}
+
+export default $1 
+endsnippet
+
+snippet reactfun
+import * as React from 'react'
+
+const $1 = ({${2:props}}) => {
+  return (
+    $3
+  )
+}
+
+export default $1 
+endsnippet

@@ -90,3 +90,8 @@ source $ZSH/oh-my-zsh.sh
 #
 alias mvim="open -a MacVim.app $1"
 alias c="cd $HOME/code"
+
+function mkd () {
+  mvim $1
+  open $1
+}
