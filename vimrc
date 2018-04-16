@@ -31,8 +31,9 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'matze/vim-move'
 Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
-Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+" Plugin 'SirVer/ultisnips'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -164,3 +165,6 @@ let g:UltiSnipsExpandTrigger="<c-f>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetsDir="~/.vim/mysnips"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
+
+" disable folding in markdown files
+let g:vim_markdown_folding_disabled = 1

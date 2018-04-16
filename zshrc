@@ -95,3 +95,6 @@ function mkd () {
   mvim $1
   open $1
 }
+
+# For rbenv
+eval "$(rbenv init -)"
