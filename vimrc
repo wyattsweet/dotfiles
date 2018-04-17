@@ -32,6 +32,8 @@ Plugin 'matze/vim-move'
 Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 Plugin 'SirVer/ultisnips'
+Plugin 'ngmy/vim-rubocop'
+
 "Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
