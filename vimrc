@@ -119,6 +119,9 @@ let g:ctrlp_max_height=20
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+" ignore node_modules in ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 " The Port Livedown runs on
 let g:livedown_port = 1337
 
