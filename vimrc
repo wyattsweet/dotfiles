@@ -35,6 +35,7 @@ Plugin 'ngmy/vim-rubocop'
 "Plugin 'honza/vim-snippets'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'SirVer/ultisnips'
 
 " All of your Plugins must be added before the following line
