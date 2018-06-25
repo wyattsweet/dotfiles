@@ -135,11 +135,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
 
 " vim-prettier, run async (before saving)
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 
 " Don't print semicolons
-let g:prettier#config#semi = 'true'
+let g:prettier#config#semi = 'false'
 " no trailing commas
 let g:prettier#config#trailing_comma = 'none'
 " space between brackets
