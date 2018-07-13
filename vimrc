@@ -141,7 +141,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Don't print semicolons
 let g:prettier#config#semi = 'false'
 " no trailing commas
-let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#trailing_comma = 'all'
 " space between brackets
 let g:prettier#config#bracket_spacing = 'true'
 
@@ -161,7 +161,7 @@ let g:ack_mappings = {
 " removes scroll bar in macvim
 set guioptions=am
 " set guioptions=aem
-set guifont=Monaco:h13m
+set guifont=IBM\ Plex\ Mono:h14m
 
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
