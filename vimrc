@@ -36,6 +36,7 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
+Bundle 'schickling/vim-bufonly'
 " Plugin 'SirVer/ultisnips'
 
 " All of your Plugins must be added before the following line
@@ -135,8 +136,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
 
 " vim-prettier, run async (before saving)
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 
 " Don't print semicolons
 let g:prettier#config#semi = 'false'
