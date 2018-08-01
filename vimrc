@@ -56,6 +56,7 @@ filetype plugin on
 
 syntax enable 
 syntax on
+set termguicolors
 color dracula
 filetype plugin indent on
 
