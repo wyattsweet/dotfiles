@@ -162,7 +162,7 @@ let g:ack_mappings = {
 " removes scroll bar in macvim
 set guioptions=am
 " set guioptions=aem
-set guifont=IBM\ Plex\ Mono:h14m
+set guifont=IBM\ Plex\ Mono:h14
 
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
@@ -175,3 +175,6 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
+
+set guicursor=
+set mouse=a
