@@ -151,7 +151,7 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:neoformat_try_formatprg = 1
 
 " auto update file when it changes
-set autoread
+" set autoread
 
 " change vim-move modifier key
 let g:move_key_modifier = 'C'
@@ -177,5 +177,11 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
 
-set guicursor=
+set guicursor+=a:ver100-iCurso
 set mouse=a
+
+" yank directly to clipboard
+set cb=unnamed
+
+" always use vertical cursor
+set guicursor+=a:ver100-iCursor
