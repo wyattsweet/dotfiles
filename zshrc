@@ -6,7 +6,6 @@ export ZSH=/Users/$USER/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="avit"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -98,3 +97,7 @@ function mkd () {
 
 # For rbenv
 eval "$(rbenv init -)"
+
+export VISUAL="nvim"
+export EDITOR="$VISUAL"
+
