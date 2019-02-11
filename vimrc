@@ -141,7 +141,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 
 " Don't print semicolons
-let g:prettier#config#semi = 'false'
+let g:prettier#config#semi = 'true'
 " no trailing commas
 let g:prettier#config#trailing_comma = 'all'
 " space between brackets
