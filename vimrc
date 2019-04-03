@@ -26,7 +26,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-obsession'
-Plugin 'dracula/vim'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'matze/vim-move'
 Plugin 'w0rp/ale'
@@ -38,6 +37,7 @@ Plugin 'gabrielelana/vim-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
 Bundle 'schickling/vim-bufonly'
 Plugin 'SirVer/ultisnips'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,8 +57,10 @@ filetype plugin on
 syntax enable 
 syntax on
 set termguicolors
-color dracula
 filetype plugin indent on
+
+" change color theme
+colorscheme atom-dark
 
 " automatically set hidden bufers
 set hidden
