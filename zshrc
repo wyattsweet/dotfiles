@@ -54,7 +54,7 @@ plugins+=(zsh-nvm)
 
 #export PATH="$PATH:/home/usr/bin"
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/Users/wyattsweet/Library/Python/3.7/bin:$PATH
 
 alias sr="redis-server /usr/local/etc/redis.conf"
 
