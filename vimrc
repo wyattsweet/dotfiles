@@ -10,14 +10,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " plugin from Github user/repo
-Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ervandew/supertab'
 Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-" Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-surround'
@@ -31,7 +32,6 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'honza/vim-snippets'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'SirVer/ultisnips'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
