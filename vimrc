@@ -17,14 +17,14 @@ Plugin 'ervandew/supertab'
 Plugin 'alvan/vim-closetag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mattn/emmet-vim'
-Plugin 'jiangmiao/auto-pairs'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
+" Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'matze/vim-move'
@@ -32,12 +32,13 @@ Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'honza/vim-snippets'
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 Plugin 'gabrielelana/vim-markdown'
-Plugin 'mustache/vim-mustache-handlebars'
-Bundle 'schickling/vim-bufonly'
+" Plugin 'mustache/vim-mustache-handlebars'
+" Bundle 'schickling/vim-bufonly'
 Plugin 'SirVer/ultisnips'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -127,9 +128,6 @@ let g:ctrlp_cmd = 'CtrlP'
 " ignore node_modules in ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-" The Port Livedown runs on
-let g:livedown_port = 1337
-
 let g:airline#extensions#tabline#enabled = 1 
 
 " Just show the filename (no path) in the tab
@@ -165,7 +163,7 @@ let g:ack_mappings = {
 " removes scroll bar in macvim
 set guioptions=am
 " set guioptions=aem
-set guifont=IBM\ Plex\ Mono:h14
+" set guifont=IBM\ Plex\ Mono:h14
 
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
@@ -185,5 +183,17 @@ set mouse=a
 " yank directly to clipboard
 set cb=unnamed
 
+set hlsearch
+
 " always use vertical cursor
 set guicursor+=a:ver100-iCursor
+
+" something to keep my cursor from being stuck on block in vim. Look into what
+" it's actually doing
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[5 q"
+endif
