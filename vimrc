@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'flazz/vim-colorschemes'
+"Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ervandew/supertab'
@@ -29,10 +30,10 @@ Plugin 'matze/vim-move'
 Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 Plugin 'ngmy/vim-rubocop'
-Plugin 'honza/vim-snippets'
 Plugin 'gabrielelana/vim-markdown'
-Plugin 'SirVer/ultisnips'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -162,11 +163,11 @@ set guioptions=am
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-let g:UltiSnipsExpandTrigger="<c-f>"
+"let g:UltiSnipsExpandTrigger="<c-f>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir="~/.vim/mysnips"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
+"let g:UltiSnipsSnippetsDir="~/.vim/mysnips"
+"let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnips"]
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
