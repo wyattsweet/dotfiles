@@ -35,6 +35,9 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+" set the leader key to space
+let mapleader = "\<Space>"
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -178,7 +181,13 @@ set mouse=a
 " yank directly to clipboard
 set cb=unnamed
 
+" Always highlight searched text
 set hlsearch
+
+" fzf search hotkeys
+nnoremap <leader>o :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+
 
 " always use vertical cursor
 set guicursor+=a:ver100-iCursor
