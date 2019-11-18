@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'flazz/vim-colorschemes'
 "Plugin 'SirVer/ultisnips'
+" Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ervandew/supertab'
@@ -23,7 +24,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-surround'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'matze/vim-move'
@@ -34,6 +34,7 @@ Plugin 'gabrielelana/vim-markdown'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'ludovicchabant/vim-gutentags'
 
 " set the leader key to space
 let mapleader = "\<Space>"
@@ -187,7 +188,8 @@ set hlsearch
 " fzf search hotkeys
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-
+" search for current word under cursor with :Tags fzf command
+nnoremap <leader>k :call fzf#vim#tags(expand('<cword>'))<CR>
 
 " always use vertical cursor
 set guicursor+=a:ver100-iCursor

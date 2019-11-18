@@ -103,3 +103,5 @@ eval "$(rbenv init -)"
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
