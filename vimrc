@@ -101,8 +101,7 @@ let g:NERDTreeWinSize=30
 "Show hidden files
 let NERDTreeShowHidden=1
 
-" Enter opens a new file in a tab from nerdtree
-" let NERDTreeMapOpenInTab='<ENTER>'
+nmap <leader>t :NERDTreeToggle<CR>
 
 " Allow Airline to open in new tabs
 set laststatus=2
@@ -185,11 +184,27 @@ set cb=unnamed
 " Always highlight searched text
 set hlsearch
 
+" ag – only search the contents of files and not file names
+" https://github.com/junegunn/fzf.vim/issues/346
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" bind leader a to start ag search of word under cursor in current file
+nnoremap <leader>a :Ag <c-r><c-w><CR>
+
 " fzf search hotkeys
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 " search for current word under cursor with :Tags fzf command
 nnoremap <leader>k :call fzf#vim#tags(expand('<cword>'))<CR>
+nnoremap <leader>s :Ag<CR>
+
+nnoremap <leader>[ <c-w>10<
+nnoremap <leader>] <c-w>10>
 
 " always use vertical cursor
 set guicursor+=a:ver100-iCursor
