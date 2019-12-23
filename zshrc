@@ -85,17 +85,10 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# PERSONAL ALIASES
-#
+
 alias mvim="open -a MacVim.app $1"
 alias c="cd $HOME/code"
 alias dbox="cd $HOME/Dropbox"
-
-function mkd () {
-  mvim $1
-  open $1
-}
 
 # For rbenv
 eval "$(rbenv init -)"
