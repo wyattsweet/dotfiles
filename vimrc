@@ -35,6 +35,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 " set the leader key to space
 let mapleader = "\<Space>"
@@ -205,6 +207,17 @@ nnoremap <leader>s :Ag<CR>
 
 nnoremap <leader>[ <c-w>10<
 nnoremap <leader>] <c-w>10>
+" map leader n move to next tab
+nnoremap <leader>n :tabn<CR>
+" map leader p move to previous tab
+nnoremap <leader>p :tabp<CR>
+nnoremap <leader>h <c-w>h
+nnoremap <leader>l <c-w>l
+" map leader w to :w
+nnoremap <leader>w :w<CR> 
+" git add file to staging
+nnoremap <leader>gw :Gw<CR> 
+nnoremap <leader>gd :Gdiff<CR>
 
 " always use vertical cursor
 set guicursor+=a:ver100-iCursor
