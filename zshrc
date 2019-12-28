@@ -91,6 +91,8 @@ source $ZSH/oh-my-zsh.sh
 alias mvim="open -a MacVim.app $1"
 alias c="cd $HOME/code"
 alias dbox="cd $HOME/Dropbox"
+# use ctags installed by homebrew
+alias ctags="`brew --prefix`/bin/ctags"
 
 function mkd () {
   mvim $1
@@ -98,7 +100,7 @@ function mkd () {
 }
 
 # For rbenv
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
