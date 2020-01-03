@@ -78,29 +78,24 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# select git branch using fzf
+# https://github.com/junegunn/fzf/wiki/examples#git
+fzf_git_branch() {
+    local branches branch
+    branches=$(git --no-pager branch -vv) &&
+    branch=$(echo "$branches" | fzf +m) &&
+    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# PERSONAL ALIASES
-#
+alias gbi="fzf_git_branch"
 alias mvim="open -a MacVim.app $1"
 alias c="cd $HOME/code"
 alias dbox="cd $HOME/Dropbox"
 
-function mkd () {
-  mvim $1
-  open $1
-}
-
 # For rbenv
 eval "$(rbenv init -)"
 
-export VISUAL="nvim"
+export VISUAL="vim"
 export EDITOR="$VISUAL"
 
 
