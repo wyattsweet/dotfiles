@@ -31,7 +31,7 @@ Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'gabrielelana/vim-markdown'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'ludovicchabant/vim-gutentags'
@@ -178,7 +178,9 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 let g:vim_markdown_folding_disabled = 1
 
 set guicursor+=a:ver100-iCurso
-set mouse=a
+
+" disable mouse
+set mouse-=a
 
 " yank directly to clipboard
 set cb=unnamed
@@ -214,7 +216,7 @@ nnoremap <leader>p :tabp<CR>
 nnoremap <leader>h <c-w>h
 nnoremap <leader>l <c-w>l
 " map leader w to :w
-nnoremap <leader>w :w<CR> 
+nnoremap <leader>w :w<CR>
 " git add file to staging
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
