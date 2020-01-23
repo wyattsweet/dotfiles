@@ -188,6 +188,9 @@ set cb=unnamed
 " Always highlight searched text
 set hlsearch
 
+" no swp files
+set noswapfile
+
 " ag – only search the contents of files and not file names
 " https://github.com/junegunn/fzf.vim/issues/346
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
