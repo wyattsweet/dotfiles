@@ -27,7 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-obsession'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'matze/vim-move'
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'gabrielelana/vim-markdown'
@@ -37,6 +37,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'neoclide/coc.nvim', {'pinned': 1}
 
 " set the leader key to space
 let mapleader = "\<Space>"
