@@ -8,7 +8,6 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 " plugin from Github user/repo
 " Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'tpope/vim-fugitive'
@@ -16,9 +15,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'w0rp/ale'
 " Plugin 'davidhalter/jedi-vim'
+" Plugin 'ervandew/supertab'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alvan/vim-closetag'
-Plugin 'ervandew/supertab'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
