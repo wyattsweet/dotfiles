@@ -4,18 +4,6 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-" plugin from Github user/repo
-" Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'flazz/vim-colorschemes'
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'w0rp/ale'
-" Plugin 'davidhalter/jedi-vim'
-" Plugin 'ervandew/supertab'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alvan/vim-closetag'
@@ -64,6 +52,11 @@ filetype plugin indent on
 
 " change color theme
 colorscheme atom-dark
+
+" always use vertical cursor
+" set guicursor+=a:ver100-iCursor
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
 
 " automatically set hidden bufers
 set hidden
@@ -227,15 +220,12 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
 
-" always use vertical cursor
-set guicursor+=a:ver100-iCursor
+""" COC CONFIG
 
-" something to keep my cursor from being stuck on block in vim. Look into what
-" it's actually doing
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-else
-    let &t_SI = "\e[5 q"
-    let &t_EI = "\e[5 q"
-endif
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
