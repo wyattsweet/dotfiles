@@ -48,7 +48,7 @@ filetype plugin on
 syntax enable 
 syntax on
 set termguicolors
-filetype plugin indent on
+" filetype plugin indent on
 
 " change color theme
 colorscheme atom-dark
