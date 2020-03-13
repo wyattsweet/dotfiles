@@ -93,6 +93,7 @@ alias c="cd $HOME/code"
 alias dbox="cd $HOME/Dropbox"
 # use ctags installed by homebrew
 alias ctags="`brew --prefix`/bin/ctags"
+alias fixav="sudo killall VDCAssistant && sudo launchctl stop com.apple.audio.coreaudiod && sudo launchctl start com.apple.audio.coreaudiod"
 
 function mkd () {
   mvim $1
