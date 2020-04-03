@@ -205,6 +205,7 @@ nnoremap <leader>b :Buffers<CR>
 " search for current word under cursor with :Tags fzf command
 nnoremap <leader>k :call fzf#vim#tags(expand('<cword>'))<CR>
 nnoremap <leader>s :Ag<CR>
+nnoremap <Leader>sw :call fzf#vim#tags(expand('<cword>'))
 
 nnoremap <leader>[ <c-w>10<
 nnoremap <leader>] <c-w>10>
@@ -291,8 +292,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -303,8 +304,8 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
