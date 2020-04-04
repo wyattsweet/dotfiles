@@ -72,16 +72,6 @@ set backspace=indent,eol,start
 " break lines on word
 set linebreak
 
-" python specific settings
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-
 " enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
 
