@@ -20,7 +20,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdtree'
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-surround'
@@ -161,13 +161,13 @@ set guioptions=am
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
+" let g:UltiSnipsExpandTrigger="<c-e>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
