@@ -1,49 +1,31 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'alvan/vim-closetag'
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'matze/vim-move'
-Plugin 'mxw/vim-jsx'
-Plugin 'neoclide/coc.nvim', {'pinned': 1}
-Plugin 'ngmy/vim-rubocop'
-Plugin 'pangloss/vim-javascript'
-Plugin 'prettier/vim-prettier'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'scrooloose/nerdtree'
-" Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'alvan/vim-closetag'
+Plug 'gabrielelana/vim-markdown'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'matze/vim-move'
+Plug 'mxw/vim-jsx'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ngmy/vim-rubocop'
+Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier'
+Plug 'qpkorr/vim-bufkill'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
 
 " set the leader key to space
 let mapleader = "\<Space>"
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 syntax enable 
 syntax on
