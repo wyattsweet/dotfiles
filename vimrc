@@ -1,49 +1,31 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'alvan/vim-closetag'
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'matze/vim-move'
-Plugin 'mxw/vim-jsx'
-Plugin 'neoclide/coc.nvim', {'pinned': 1}
-Plugin 'ngmy/vim-rubocop'
-Plugin 'pangloss/vim-javascript'
-Plugin 'prettier/vim-prettier'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'scrooloose/nerdtree'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'alvan/vim-closetag'
+Plug 'gabrielelana/vim-markdown'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'matze/vim-move'
+Plug 'mxw/vim-jsx'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ngmy/vim-rubocop'
+Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier'
+Plug 'qpkorr/vim-bufkill'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
 
 " set the leader key to space
 let mapleader = "\<Space>"
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 syntax enable 
 syntax on
@@ -71,7 +53,6 @@ set softtabstop=2
 set backspace=indent,eol,start
 " break lines on word
 set linebreak
-
 
 " enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
@@ -162,13 +143,13 @@ set guioptions=am
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
+" let g:UltiSnipsExpandTrigger="<c-e>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
+" let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
@@ -205,6 +186,7 @@ nnoremap <leader>b :Buffers<CR>
 " search for current word under cursor with :Tags fzf command
 nnoremap <leader>k :call fzf#vim#tags(expand('<cword>'))<CR>
 nnoremap <leader>s :Ag<CR>
+nnoremap <Leader>sw :call fzf#vim#tags(expand('<cword>'))
 
 nnoremap <leader>[ <c-w>10<
 nnoremap <leader>] <c-w>10>
@@ -219,6 +201,7 @@ nnoremap <leader>w :w<CR>
 " git add file to staging
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
+
 
 """ COC CONFIG
 
@@ -291,8 +274,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -303,8 +286,8 @@ augroup mygroup
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
