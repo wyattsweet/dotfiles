@@ -53,7 +53,6 @@ filetype plugin indent on
 " change color theme
 colorscheme onedark
 
-let g:python_highlight_all = 1
 " always use vertical cursor
 " set guicursor+=a:ver100-iCursor
 set guicursor=n-v-c:block-Cursor
