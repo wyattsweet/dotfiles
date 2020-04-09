@@ -1,10 +1,12 @@
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
+" Plug 'ngmy/vim-rubocop'
 Plug 'VundleVim/Vundle.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 Plug 'gabrielelana/vim-markdown'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
@@ -12,18 +14,16 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'matze/vim-move'
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier'
 Plug 'qpkorr/vim-bufkill'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'joshdick/onedark.vim'
-Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " set the leader key to space
