@@ -23,6 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " set the leader key to space
@@ -50,6 +51,7 @@ endif
 syntax on
 filetype plugin indent on
 
+let g:python_highlight_all = 1
 " change color theme
 colorscheme onedark
 
