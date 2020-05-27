@@ -24,6 +24,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 " set the leader key to space
@@ -73,6 +74,12 @@ set softtabstop=2
 set backspace=indent,eol,start
 " break lines on word
 set linebreak
+
+" comfortable-motion
+nnoremap <silent> <C-n> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-m> :call comfortable_motion#flick(-100)<CR>
+" nnoremap <silent> <C-d> :call comfortable_motion#flick(200)<CR>
+" nnoremap <silent> <C-u> :call comfortable_motion#flick(-200)<CR>
 
 " enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
