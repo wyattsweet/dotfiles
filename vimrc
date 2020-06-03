@@ -22,8 +22,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
@@ -46,6 +47,10 @@ if (empty($TMUX))
   if (has("termguicolors"))
     set termguicolors
   endif
+endif
+
+if !has('gui_running')
+  set t_Co=256
 endif
 
 " syntax enable 
@@ -130,10 +135,14 @@ let g:ctrlp_cmd = 'CtrlP'
 " ignore node_modules in ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
-let g:airline#extensions#tabline#enabled = 1 
-
+" let g:airline#extensions#tabline#enabled = 1
 " Just show the filename (no path) in the tab
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#fnamemod = ':t'
+
+" lightline colorscheme config
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 " Nerformat config
 " autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
@@ -231,6 +240,8 @@ nnoremap <leader>gd :Gdiff<CR>
 
 
 """ COC CONFIG
+
+let g:coc_disable_startup_warning = 1
 
 " if hidden is not set, TextEdit might fail.
 set hidden
