@@ -74,8 +74,8 @@ map bp :bp<cr>
 map bn :bn<cr>
 
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set backspace=indent,eol,start
 " break lines on word
 set linebreak
