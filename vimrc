@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'VundleVim/Vundle.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
+Plug 'dense-analysis/ale'
 Plug 'gabrielelana/vim-markdown'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf'
@@ -237,7 +238,6 @@ nnoremap <leader>w :w<CR>
 " git add file to staging
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
-
 
 """ COC CONFIG
 
