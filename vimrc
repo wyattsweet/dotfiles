@@ -3,9 +3,9 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 " Plug 'ngmy/vim-rubocop'
 Plug 'VundleVim/Vundle.vim'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'gabrielelana/vim-markdown'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf'
