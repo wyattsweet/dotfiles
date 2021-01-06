@@ -3,15 +3,15 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 " Plug 'ngmy/vim-rubocop'
 Plug 'VundleVim/Vundle.vim'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 " Plug 'dense-analysis/ale'
 Plug 'gabrielelana/vim-markdown'
 Plug 'joshdick/onedark.vim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'matze/vim-move'
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
