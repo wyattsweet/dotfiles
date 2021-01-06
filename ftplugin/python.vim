@@ -7,4 +7,3 @@ set autoindent
 set fileformat=unix
 
 let python_highlight_all=1
-syntax on
