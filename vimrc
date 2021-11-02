@@ -190,7 +190,7 @@ autocmd BufRead,BufNewFile *.md setlocal spell
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
+" Setting up UtliSnips for NeoVim - https://jdhao.github.io/2019/04/17/neovim_snippet_s1/
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
