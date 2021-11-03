@@ -13,7 +13,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 " Plug 'ludovicchabant/vim-gutentags'
 Plug 'matze/vim-move'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier'
@@ -27,6 +27,9 @@ Plug 'tpope/vim-surround'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'Mizux/vim-colorschemes'
+Plug 'therubymug/vim-pyte'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 " set the leader key to space
@@ -60,12 +63,16 @@ filetype plugin indent on
 
 let g:python_highlight_all = 1
 " change color theme
-colorscheme onedark
+colorscheme pyte
 
 " always use vertical cursor
 " set guicursor+=a:ver100-iCursor
-set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
+" set guicursor=n-v-c:block-Cursor
+" set guicursor+=i:ver100-iCursor
+
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " automatically set hidden bufers
 set hidden
@@ -83,7 +90,7 @@ set linebreak
 
 " comfortable-motion
 nnoremap <silent> <C-n> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-m> :call comfortable_motion#flick(-100)<CR>
+noremap <silent> <C-m> :call comfortable_motion#flick(-100)<CR>
 " nnoremap <silent> <C-d> :call comfortable_motion#flick(200)<CR>
 " nnoremap <silent> <C-u> :call comfortable_motion#flick(-200)<CR>
 
@@ -180,18 +187,18 @@ set guioptions=am
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-" let g:UltiSnipsExpandTrigger="<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" let g:UltiSnipsSnippetsDir="~/.vim/mysnippets"
-" let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Setting up UtliSnips for NeoVim - https://jdhao.github.io/2019/04/17/neovim_snippet_s1/
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="vertical"
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
 
-set guicursor+=a:ver100-iCurso
+" set guicursor+=a:ver100-iCurso
 
 " disable mouse
 set mouse-=a
@@ -249,9 +256,6 @@ set hidden
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
-
-" Better display for messages
-set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
