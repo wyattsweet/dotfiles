@@ -1,6 +1,6 @@
 {
     "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Enabled": true
 //    "python.linting.mypyEnabled": true
 //    "python.formatting.blackPath": "~/virtualenvs/py3neovim/bin/black",
 //    "python.formatting.autopep8Path": "~/virtualenvs/py3neovim/bin/autopep8",
