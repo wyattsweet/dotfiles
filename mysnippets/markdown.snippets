@@ -3,15 +3,13 @@ snippet b
 **${1:text}**
 endsnippet
 
-# header
-snippet header
----
-{
-  "title": "$1",
-  "author": "Wyatt Sweet",
-  "tags": [$2],
-  "date": `date +%Y-%m-%d`,
-  "published": false
-}
----
+snippet h1
+# ${1:h1 text}
+endsnippet
+
+# text code block
+snippet textblock
+\`\`\`text
+$1
+\`\`\`
 endsnippet

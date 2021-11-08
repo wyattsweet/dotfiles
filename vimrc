@@ -6,7 +6,7 @@ Plug 'VundleVim/Vundle.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 " Plug 'dense-analysis/ale'
-Plug 'gabrielelana/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -30,6 +30,9 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
 Plug 'SirVer/ultisnips'
+Plug 'ixru/nvim-markdown'
+Plug 'itspriddle/vim-marked'
+
 call plug#end()
 
 " set the leader key to space
@@ -245,6 +248,9 @@ nnoremap <leader>w :w<CR>
 " git add file to staging
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
+
+""" CUSTOM FUNCTIONS
+command Markdown call functions#Markdown()
 
 """ COC CONFIG
 
