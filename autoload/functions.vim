@@ -2,7 +2,7 @@
 " filename#FunctionName()
 
 function! functions#Markdown()
-    source ~/.vim/after/ftplugin/markdown.vim
+    source ~/.config/nvim/ftplugin/markdown.vim
     NERDTree
     call feedkeys("O")
 endfunction
