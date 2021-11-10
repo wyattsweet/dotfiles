@@ -6,3 +6,10 @@ function! functions#Markdown()
     NERDTree
     call feedkeys("O")
 endfunction
+
+" Function to source only if file exists {
+function! functions#SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction

@@ -29,6 +29,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
+"
 Plug 'SirVer/ultisnips'
 Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
@@ -251,6 +252,9 @@ nnoremap <leader>gd :Gdiff<CR>
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()
+
+" source local config if it exists
+call functions#SourceIfExists('~/.config/nvim/local.vim')
 
 """ COC CONFIG
 
