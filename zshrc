@@ -1,9 +1,6 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/$USER/.oh-my-zsh
-export PATH=/usr/local/bin:/Users/wyattsweet/Library/Python/3.7/bin:$PATH
 export TERM=xterm-256color
-export EDITOR=/usr/local/bin/nvim
-export VISUAL=/usr/local/bin/nvim
+export EDITOR=$NVIM
+export VISUAL=$NVIM
 # how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=14
 
