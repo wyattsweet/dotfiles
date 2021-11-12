@@ -1,58 +1,52 @@
 # Functions
 snippet fn
-function ${1:name}($2) {
-  $3
-}
-endsnippet
-
-snippet afn
 ($1) => {
-  $0
+    $0
 }
 endsnippet
 
 # conditionals
 snippet if
 if ($1) {
-  $2  
+    $2
 }
 endsnippet
 
 # class
 snippet cla
 class ${1:name} {
-  $2
+    $2
 }
 endsnippet
 
 # loops and iterators
 snippet while
 while ($1) {
-  $0
+    $0
 }
 endsnippet
 
 snippet for
 for (let i = 0; i < $1; i++) {
-  $2
+    $2
 }
 endsnippet
 
 snippet forof
 for (${1:key} of ${2:iterable}) {
-  $0
+    $0
 }
 endsnippet
 
 snippet fe
 ${1:array}.forEach((${2:value}) => {
-  $0
+    $0
 })
 endsnippet
 
 snippet forin
 for (${1:variable} in ${2:collection}) {
-  $0
+    $0
 }
 endsnippet
 
@@ -72,31 +66,19 @@ var $1 = $2
 snippet imp
 import $1 from '$2'
 endsnippet
-  
+
 snippet cl
 console.log($1)
 endsnippet
 
 # React Snippets
-snippet reactclass
-import React from 'react'
-
-class $1 extends React.Component {
-  constructor() {}
-
-  render() {}
-}
-
-export default $1
-endsnippet
-
 snippet reactfun
 import React from 'react'
 
 const ${1:component name} = ({${2:props}}) => {
-  return (
-    $3
-  )
+    return (
+        $3
+    )
 }
 
 export default $1
