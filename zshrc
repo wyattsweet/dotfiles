@@ -3,6 +3,8 @@ export EDITOR=$NVIM
 export VISUAL=$NVIM
 # how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=14
+# Ignore node_modules directory when using fzf
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
