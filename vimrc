@@ -33,6 +33,7 @@ Plug 'therubymug/vim-pyte'
 Plug 'SirVer/ultisnips'
 Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
 
@@ -249,6 +250,7 @@ nnoremap <leader>w :w<CR>
 " git add file to staging
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gb :Git blame<CR>
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()

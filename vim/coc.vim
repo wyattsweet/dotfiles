@@ -1,6 +1,8 @@
 """ COC CONFIG
-
 let g:coc_disable_startup_warning = 1
+
+" TODO: Auto fix eslint errors with leader + f
+nnoremap <leader>f :CocCommand eslint.executeAutofix<CR>
 
 " if hidden is not set, TextEdit might fail.
 set hidden
