@@ -72,14 +72,28 @@ console.log($1)
 endsnippet
 
 # React Snippets
-snippet reactfun
+snippet react
 import React from 'react'
 
 const ${1:component name} = ({${2:props}}) => {
     return (
         $3
     )
-}
+};
 
-export default $1
+export default $1;
+endsnippet
+
+# Tests
+snippet testDefault
+import React from 'react';
+import { shallow } from 'enzyme';
+
+const defaultProps = {};
+
+describe('${1:component name}', () => {
+    it('renders correctly', () => {
+        const wrapper = shallow(<$1 {...defaultProps} />);
+    });
+});
 endsnippet
