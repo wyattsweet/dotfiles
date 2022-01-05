@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # source general aliases
 source ~/dotfiles/zsh/alias.zsh
-# if local aliases source them as well
+# if local aliases source them
 [ -f ~/.alias_local.zsh ] && source ~/.alias_local.zsh
 # source functions
 source ~/dotfiles/zsh/functions.zsh
