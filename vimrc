@@ -31,7 +31,7 @@ Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
 "
 Plug 'SirVer/ultisnips'
-Plug 'ixru/nvim-markdown'
+"Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
 
