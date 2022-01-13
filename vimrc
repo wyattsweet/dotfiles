@@ -251,6 +251,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>r R
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()
