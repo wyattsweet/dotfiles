@@ -31,7 +31,7 @@ Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
 "
 Plug 'SirVer/ultisnips'
-Plug 'ixru/nvim-markdown'
+"Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -254,6 +254,7 @@ nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>vimrc :vsplit $MYVIMRC<CR>
 nnoremap <leader>snip :vsplit ~/dotfiles/mysnippets<CR>
 nnoremap <leader>ntf :NERDTreeFind<CR>
+nnoremap <leader>r R
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()
