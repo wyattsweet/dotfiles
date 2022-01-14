@@ -251,6 +251,9 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>gw :Gw<CR> 
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>vimrc :vsplit $MYVIMRC<CR>
+nnoremap <leader>snip :vsplit ~/dotfiles/mysnippets<CR>
+nnoremap <leader>ntf :NERDTreeFind<CR>
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()
