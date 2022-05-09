@@ -2,18 +2,6 @@ snippet ipdb
 import ipdb; ipdb.set_trace()
 endsnippet
 
-snippet chord
-{
-    'root_string': $1,
-    'source': '%s - pg. $2' % COMPLETE_JG,
-    'starting_fret': $3,
-    'diagram': [
-        '$4',
-        '|_|_|_|_|_|',
-        '|_|_|_|_|_|',
-        '|_|_|_|_|_|',
-        '|_|_|_|_|_|',
-        '$0'
-    ]
-},
+snippet p
+print($1)
 endsnippet

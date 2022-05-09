@@ -73,7 +73,9 @@ endsnippet
 
 # React Snippets
 snippet react
-import React from 'react'
+// @flow
+
+import React from 'react';
 
 const ${1:component name} = ({${2:props}}) => {
     return (
@@ -84,8 +86,14 @@ const ${1:component name} = ({${2:props}}) => {
 export default $1;
 endsnippet
 
+snippet index
+import ${1:component name} from './$1.js';
+
+export default $1;
+endsnippet
+
 # Tests
-snippet testDefault
+snippet testEnzyme 
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -94,6 +102,19 @@ const defaultProps = {};
 describe('${1:component name}', () => {
     it('renders correctly', () => {
         const wrapper = shallow(<$1 {...defaultProps} />);
+    });
+});
+endsnippet
+
+snippet testrtl
+import React from 'react';
+import { render } from '@testing-library/react';
+
+const defaultProps = {};
+
+describe('${1:component name}', () => {
+    it('renders correctly', () => {
+        render(<$1 {...defaultProps} />);
     });
 });
 endsnippet
