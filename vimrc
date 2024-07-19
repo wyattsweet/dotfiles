@@ -30,11 +30,11 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
 "
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
-
+Plug 'github/copilot.vim'
 call plug#end()
 
 " set the leader key to space
