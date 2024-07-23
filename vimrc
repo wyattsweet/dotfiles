@@ -1,20 +1,14 @@
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
-" Plug 'ngmy/vim-rubocop'
 Plug 'VundleVim/Vundle.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
-" Plug 'dense-analysis/ale'
-" Plug 'gabrielelana/vim-markdown'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-" Plug 'ludovicchabant/vim-gutentags'
 Plug 'matze/vim-move'
-" Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier'
 Plug 'qpkorr/vim-bufkill'
@@ -23,19 +17,31 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
-"
-"Plug 'SirVer/ultisnips'
-"Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+Plug 'mfussenegger/nvim-lint'
 call plug#end()
+
+lua << EOF
+require('lint').linters_by_ft = {
+  javascript = {'eslint'}
+}
+
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
+EOF
+
+" Run linter on save
+au BufWritePost * lua require('lint').try_lint()
 
 " set the leader key to space
 let mapleader = "\<Space>"
@@ -255,11 +261,15 @@ nnoremap <leader>vimrc :vsplit $MYVIMRC<CR>
 nnoremap <leader>snip :vsplit ~/dotfiles/mysnippets<CR>
 nnoremap <leader>ntf :NERDTreeFind<CR>
 nnoremap <leader>r R
+" Move buffer to the far left
+nnoremap <Leader>ml :wincmd H<CR>
+" move table to the left
+nnoremap <Leader>tl :tabmove -1<CR>
+" Move tab to the right
+nnoremap <Leader>tr :tabmove +1<CR>
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()
 
 " source local config if it exists
 call functions#SourceIfExists('~/.config/nvim/local.vim')
-
-exe 'source ~/dotfiles/vim/coc.vim'
