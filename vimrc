@@ -208,9 +208,6 @@ let g:vim_markdown_folding_disabled = 1
 " disable mouse
 set mouse-=a
 
-" yank directly to clipboard
-set cb=unnamed
-
 " Always highlight searched text
 set hlsearch
 
@@ -255,6 +252,12 @@ nnoremap <leader>vimrc :vsplit $MYVIMRC<CR>
 nnoremap <leader>snip :vsplit ~/dotfiles/mysnippets<CR>
 nnoremap <leader>ntf :NERDTreeFind<CR>
 nnoremap <leader>r R
+
+" Copy to system clipboard
+vnoremap <Leader>y "*y
+noremap <Leader>p "*p
+vnoremap <Leader>c "+y
+noremap <Leader>v "+p
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()

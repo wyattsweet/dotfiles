@@ -25,6 +25,9 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git zsh-nvm vi-mode)
 # zsh-syntax-highlighting needs to be the last plugin
 plugins+=(zsh-syntax-highlighting)
+# rbenv
+eval "$(rbenv init - zsh)"
+export RUBY_CONFIGURE_OPTS="--with-zlib-dir=$(brew --prefix zlib) --with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline) --with-libyaml-dir=$(brew --prefix libyaml)"
 
 source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
