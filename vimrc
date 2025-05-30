@@ -92,17 +92,29 @@ lua << EOF
  require("cmp_git").setup() ]]-- 
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
-    sources = {
-      { name = 'buffer' }
-    }
-  })
+  -- cmp.setup.cmdline('/', {
+  --   sources = {
+  --     { name = 'buffer' }
+  --   }
+  -- })
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- End of nvim-cmp setup
   require("lspconfig").pyright.setup{}
   require("lspconfig").eslint.setup{}
+
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
 EOF
 
 " Copilot settings
@@ -274,7 +286,7 @@ let g:vim_markdown_folding_disabled = 1
 set mouse-=a
 
 " yank directly to clipboard
-set cb=unnamed
+" set cb=unnamed
 
 " Always highlight searched text
 set hlsearch
@@ -305,9 +317,9 @@ nnoremap <Leader>sw :call fzf#vim#tags(expand('<cword>'))
 nnoremap <leader>[ <c-w>10<
 nnoremap <leader>] <c-w>10>
 " map leader n move to next tab
-nnoremap <leader>n :tabn<CR>
+nnoremap <leader>tn :tabn<CR>
 " map leader p move to previous tab
-nnoremap <leader>p :tabp<CR>
+nnoremap <leader>tp :tabp<CR>
 nnoremap <leader>h <c-w>h
 nnoremap <leader>l <c-w>l
 " map leader w to :w
@@ -327,6 +339,10 @@ nnoremap <Leader>tl :tabmove -1<CR>
 " Move tab to the right
 nnoremap <Leader>tr :tabmove +1<CR>
 nnoremap <Leader>f :Prettier<CR>
+
+" Copy to system clipboard
+vnoremap <Leader>y "*y
+noremap <Leader>p "*p
 
 """ CUSTOM FUNCTIONS
 command Markdown call functions#Markdown()
