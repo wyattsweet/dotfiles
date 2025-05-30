@@ -30,7 +30,8 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
 "
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
+"
 "Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
@@ -192,13 +193,14 @@ set guioptions=am
 " automatically turns on spellcheck for Markdown files
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" Setting up UtliSnips for NeoVim - https://jdhao.github.io/2019/04/17/neovim_snippet_s1/
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsExpandTrigger="<c-e>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"" Setting up UtliSnips for NeoVim - https://jdhao.github.io/2019/04/17/neovim_snippet_s1/
+"let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
