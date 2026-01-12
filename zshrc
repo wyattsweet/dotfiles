@@ -6,6 +6,8 @@ export UPDATE_ZSH_DAYS=14
 # Ignore node_modules directory when using fzf
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
 
+export BROWSER="echo"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
