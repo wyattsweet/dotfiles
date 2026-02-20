@@ -21,9 +21,6 @@ Plug 'Mizux/vim-colorschemes'
 Plug 'therubymug/vim-pyte'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'github/copilot.vim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'branch': 'release/0.x'
@@ -37,11 +34,6 @@ Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
 lua << EOF
-    require("CopilotChat").setup {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    } 
-
   -- Set up nvim-cmp.
   local cmp = require'cmp'
 
@@ -116,10 +108,6 @@ lua << EOF
     },
   }
 EOF
-
-" Copilot settings
-let g:copilot_no_tab_map = v:true
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " set the leader key to space
 let mapleader = "\<Space>"
