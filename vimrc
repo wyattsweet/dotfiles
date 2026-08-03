@@ -40,18 +40,9 @@ lua << EOF
 
   cmp.setup({
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+        vim.snippet.expand(args.body)
       end,
-    },
-    window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
@@ -64,32 +55,10 @@ lua << EOF
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
     })
   })
-
-  -- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
-  -- Set configuration for specific filetype.
-  --[[ cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-      { name = 'git' },
-    }, {
-      { name = 'buffer' },
-    })
- })
- require("cmp_git").setup() ]]-- 
-
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  -- cmp.setup.cmdline('/', {
-  --   sources = {
-  --     { name = 'buffer' }
-  --   }
-  -- })
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -113,19 +82,11 @@ EOF
 " set the leader key to space
 let mapleader = "\<Space>"
 
-" Below is required for onedark theme
-
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+" True color support
 if (empty($TMUX))
   if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
   if (has("termguicolors"))
     set termguicolors
   endif
@@ -142,11 +103,6 @@ filetype plugin indent on
 let g:python_highlight_all = 1
 " change color theme
 colorscheme pyte
-
-" always use vertical cursor
-" set guicursor+=a:ver100-iCursor
-" set guicursor=n-v-c:block-Cursor
-" set guicursor+=i:ver100-iCursor
 
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -170,19 +126,12 @@ set linebreak
 " comfortable-motion
 nnoremap <silent> <C-n> :call comfortable_motion#flick(100)<CR>
 noremap <silent> <C-m> :call comfortable_motion#flick(-100)<CR>
-" nnoremap <silent> <C-d> :call comfortable_motion#flick(200)<CR>
-" nnoremap <silent> <C-u> :call comfortable_motion#flick(-200)<CR>
 
 " enables jsx in .jsx and .js file extensions
 let g:jsx_ext_required = 0
 
-" turn off parenthesis matching
-" :let loaded_matchparen = 1
-
 "turn on line number
 set number
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 au BufRead,BufNewFile *.ejs setfiletype html
 
@@ -190,9 +139,6 @@ au BufRead,BufNewFile *.ejs setfiletype html
 
 "NERDTree width
 let g:NERDTreeWinSize=30
-
-"Auto open NERDTree
-"au VimEnter * NERDTree
 
 "Show hidden files
 let NERDTreeShowHidden=1
@@ -205,44 +151,13 @@ set laststatus=2
 " Vim-close tag setting
 let g:closetag_filenames = "*.erb,*.html,*.xhtml,*.phtml,*.jsx,*.js,*.tsx,*.ts"
 
-let g:ctrlp_max_files=0
-
-let g:ctrlp_max_height=20
-
-" ctrlP opens file in a new tab
-" let g:ctrlp_prompt_mappings = {
-"     \ 'AcceptSelection("e")': ['<c-t>'],
-"     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-"     \ }
-
-" Invoke CtrlP by pressing ctrl + p
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" ignore node_modules in ctrlp
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-" let g:airline#extensions#tabline#enabled = 1
-" Just show the filename (no path) in the tab
-" let g:airline#extensions#tabline#fnamemod = ':t'
-
 " lightline colorscheme config
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
 
-" Nerformat config
-" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ none
-
-" vim-prettier
-" Turn off auto formatting
-" let g:prettier#autoformat = 0
-
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
-
-" auto update file when it changes
-" set autoread
 
 " change vim-move modifier key
 let g:move_key_modifier = 'C'
@@ -265,8 +180,6 @@ let g:UltiSnipsEditSplit="vertical"
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
 let g:table_mode_corner='|'
-
-" set guicursor+=a:ver100-iCurso
 
 " disable mouse
 set mouse-=a
