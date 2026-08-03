@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dotfiles Setup Guide</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #1a202c;
+    --text-muted: #718096;
+    --accent: #4a6cf7;
+    --accent-light: #ebefff;
+    --success: #38a169;
+    --success-light: #f0fff4;
+    --success-border: #9ae6b4;
+    --warning: #d97706;
+    --warning-light: #fffbeb;
+    --code-bg: #1e2432;
+    --code-text: #e2e8f0;
+    --sidebar-width: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .layout { display: flex; min-height: 100vh; }
+
+  /* Sidebar */
+  .sidebar {
+    width: var(--sidebar-width);
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 24px 0;
+    z-index: 100;
+  }
+
+  .sidebar-header {
+    padding: 0 20px 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+
+  .sidebar-header h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .progress-bar {
+    margin-top: 10px;
+    height: 6px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 5px;
+  }
+
+  .nav-list { list-style: none; padding: 0 8px; }
+
+  .nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .nav-item a:hover { background: var(--accent-light); color: var(--accent); }
+  .nav-item a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+  .nav-item a.done { color: var(--success); }
+
+  .nav-icon { font-size: 15px; width: 18px; text-align: center; flex-shrink: 0; }
+
+  /* Main */
+  .main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    max-width: 820px;
+    padding: 48px 48px 80px;
+  }
+
+  /* Hero */
+  .hero { margin-bottom: 48px; }
+
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .hero p { font-size: 16px; color: var(--text-muted); max-width: 600px; }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+
+  .tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 99px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Sections */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    scroll-margin-top: 24px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .section-header:hover { background: var(--bg); }
+  .section-header.done { background: var(--success-light); }
+
+  .section-check {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .section-header.done .section-check {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+  }
+
+  .section-title { flex: 1; font-size: 17px; font-weight: 700; }
+
+  .section-badge {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 99px;
+    padding: 2px 9px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-badge.optional { background: var(--warning-light); color: var(--warning); }
+
+  .chevron { color: var(--text-muted); transition: transform 0.2s; font-size: 13px; }
+  .section.collapsed .chevron { transform: rotate(-90deg); }
+
+  .section-body {
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section.collapsed .section-body { display: none; }
+
+  /* Steps */
+  .step { margin-top: 20px; }
+
+  .step-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .step p { color: var(--text); margin-bottom: 10px; }
+  .step p:last-child { margin-bottom: 0; }
+
+  /* Verify box */
+  .verify-box {
+    margin-top: 24px;
+    border: 1px solid var(--success-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .verify-box-header {
+    background: var(--success-light);
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--success);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .verify-box .checklist {
+    margin: 0;
+    padding: 0 14px;
+  }
+
+  .verify-box .checklist li {
+    border-bottom-color: var(--success-border);
+    padding: 8px 0;
+  }
+
+  .verify-box .checklist li:last-child { border-bottom: none; }
+
+  /* Code blocks */
+  .code-block {
+    position: relative;
+    background: var(--code-bg);
+    border-radius: 8px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+
+  .code-block pre {
+    padding: 14px 16px;
+    padding-right: 70px;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--code-text);
+    white-space: pre;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .copy-btn:hover { background: rgba(255,255,255,0.2); color: white; }
+  .copy-btn.copied { background: var(--success); border-color: var(--success); color: white; }
+
+  code {
+    background: #f1f5f9;
+    color: #d63384;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+    font-size: 13px;
+  }
+
+  .code-block code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  /* Notes */
+  .note {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-light);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  .note.warning { border-color: var(--warning); background: var(--warning-light); }
+  .note.success { border-color: var(--success); background: var(--success-light); }
+  .note strong { font-weight: 700; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 10px 0; }
+
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--bg); }
+
+  kbd {
+    display: inline-block;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e0;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: 'SF Mono', Consolas, monospace;
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  /* Checklists */
+  .checklist { list-style: none; margin: 10px 0; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist-check {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: all 0.15s;
+  }
+
+  .checklist-check.checked { background: var(--success); border-color: var(--success); color: white; }
+
+  h3 { font-size: 15px; font-weight: 700; margin: 20px 0 8px; color: var(--text); }
+  h3:first-child { margin-top: 0; }
+
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); }
+
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(74,108,247,0.4);
+  }
+
+  @media (max-width: 800px) {
+    .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; padding: 24px 20px 60px; }
+    .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Setup Guide</h2>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 of 11 complete</div>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="#prerequisites"><span class="nav-icon">🔧</span> Prerequisites</a></li>
+      <li class="nav-item"><a href="#clone"><span class="nav-icon">📁</span> Clone Repo</a></li>
+      <li class="nav-item"><a href="#zsh"><span class="nav-icon">🐚</span> Zsh + Oh-My-Zsh</a></li>
+      <li class="nav-item"><a href="#tmux"><span class="nav-icon">🖥</span> Tmux + TPM</a></li>
+      <li class="nav-item"><a href="#neovim"><span class="nav-icon">📝</span> Neovim</a></li>
+      <li class="nav-item"><a href="#vimplug"><span class="nav-icon">🔌</span> vim-plug &amp; Plugins</a></li>
+      <li class="nav-item"><a href="#ag"><span class="nav-icon">🔍</span> The Silver Searcher</a></li>
+      <li class="nav-item"><a href="#fzf"><span class="nav-icon">⚡</span> fzf</a></li>
+      <li class="nav-item"><a href="#lsp"><span class="nav-icon">🧠</span> Language Servers</a></li>
+      <li class="nav-item"><a href="#gitconfig"><span class="nav-icon">📋</span> Git Config</a></li>
+      <li class="nav-item"><a href="#iterm"><span class="nav-icon">🎨</span> iTerm2 Theme</a></li>
+    </ul>
+  </nav>
+
+  <main class="main">
+
+    <div class="hero">
+      <h1>Mac Dotfiles Setup</h1>
+      <p>Step-by-step guide to setting up this development environment on a fresh Mac. Check off sections as you go — progress is saved in your browser.</p>
+      <div class="tag-list">
+        <span class="tag">Neovim</span>
+        <span class="tag">tmux</span>
+        <span class="tag">Zsh</span>
+        <span class="tag">fzf</span>
+        <span class="tag">LSP</span>
+        <span class="tag">vim-plug</span>
+      </div>
+    </div>
+
+    <!-- Prerequisites -->
+    <div class="section" id="prerequisites">
+      <div class="section-header" onclick="toggleSection('prerequisites')">
+        <div class="section-check" onclick="toggleDone(event,'prerequisites')"></div>
+        <div class="section-title">Prerequisites</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="step">
+          <div class="step-label">Step 1 — Xcode Command Line Tools</div>
+          <p>Provides git, clang, and other essential build tools. A dialog will appear prompting you to install.</p>
+          <div class="code-block"><pre><code>xcode-select --install</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Homebrew</div>
+          <p>The package manager used for almost everything in this setup. After install, follow any instructions it prints about adding brew to your PATH.</p>
+          <div class="code-block"><pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+          <p>On Apple Silicon Macs, add Homebrew to your PATH:</p>
+          <div class="code-block"><pre><code>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 3 — Node.js</div>
+          <p>Required for yarn (vim-prettier) and the language servers installed later.</p>
+          <div class="code-block"><pre><code>brew install node</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>brew --version</code> prints a version number</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>node --version</code> prints a version number</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clone -->
+    <div class="section" id="clone">
+      <div class="section-header" onclick="toggleSection('clone')">
+        <div class="section-check" onclick="toggleDone(event,'clone')"></div>
+        <div class="section-title">Clone the Repo</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="note warning"><strong>Important:</strong> The repo <em>must</em> be cloned to <code>~/dotfiles</code>. The zshrc sources files using the hardcoded path <code>~/dotfiles/zsh/</code>, so any other location will break the shell config.</div>
+        <div class="step">
+          <div class="code-block"><pre><code>git clone https://github.com/wyattsweet/dotfiles.git ~/dotfiles</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>ls ~/dotfiles</code> shows <code>vimrc</code>, <code>zshrc</code>, <code>tmux.conf</code>, etc.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zsh -->
+    <div class="section" id="zsh">
+      <div class="section-header" onclick="toggleSection('zsh')">
+        <div class="section-check" onclick="toggleDone(event,'zsh')"></div>
+        <div class="section-title">Zsh + Oh-My-Zsh</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="note success"><strong>Note:</strong> Zsh is the default shell on macOS Catalina (10.15) and later. Skip the install step if <code>echo $SHELL</code> prints <code>/bin/zsh</code>.</div>
+        <div class="step">
+          <div class="step-label">Step 1 — Install Oh-My-Zsh</div>
+          <p>Manages the zsh theme and plugins. The <code>avit</code> theme and <code>vi-mode</code> plugin are configured in the zshrc.</p>
+          <div class="code-block"><pre><code>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Install zsh-syntax-highlighting</div>
+          <p>Highlights valid commands as you type. Must be installed into the Oh-My-Zsh custom plugins directory.</p>
+          <div class="code-block"><pre><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 3 — Symlink zshrc</div>
+          <p>Back up the generated <code>~/.zshrc</code>, then symlink the dotfiles version.</p>
+          <div class="code-block"><pre><code>mv ~/.zshrc ~/.zshrc.bak
+ln -s ~/dotfiles/zshrc ~/.zshrc</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 4 — Reload the shell</div>
+          <div class="code-block"><pre><code>source ~/.zshrc</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="note"><strong>Optional:</strong> The zshrc sources <code>~/.alias_local.zsh</code> if it exists — use this for machine-specific aliases you don't want in the repo.</div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Open a new terminal — commands light up with syntax highlighting as you type</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>The prompt uses the <code>avit</code> theme (git branch shown when inside a repo)</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tmux -->
+    <div class="section" id="tmux">
+      <div class="section-header" onclick="toggleSection('tmux')">
+        <div class="section-check" onclick="toggleDone(event,'tmux')"></div>
+        <div class="section-title">Tmux + TPM</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="step">
+          <div class="step-label">Step 1 — Install tmux</div>
+          <div class="code-block"><pre><code>brew install tmux</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Install TPM (Tmux Plugin Manager)</div>
+          <p>TPM manages tmux plugins — the equivalent of vim-plug for tmux.</p>
+          <div class="code-block"><pre><code>git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 3 — Symlink tmux.conf</div>
+          <div class="code-block"><pre><code>ln -s ~/dotfiles/tmux.conf ~/.tmux.conf</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 4 — Install tmux plugins</div>
+          <p>Start tmux, then press <kbd>Ctrl-f</kbd> then <kbd>I</kbd> (capital I) to install plugins. This installs <code>tmux-resurrect</code> for session persistence.</p>
+          <div class="code-block"><pre><code>tmux</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="note warning">
+          <strong>Mac clipboard note:</strong> The config uses <code>xclip</code> for the <kbd>y</kbd> copy binding, which is Linux-only. On Mac, edit <code>~/.tmux.conf</code> and change that line to:
+          <div style="margin-top:8px;background:var(--code-bg);border-radius:6px;padding:10px 14px;font-family:monospace;font-size:13px;color:var(--code-text);">bind-key -T copy-mode-vi y send-keys -X copy-pipe "pbcopy"</div>
+        </div>
+        <h3>Key bindings reference</h3>
+        <table>
+          <tr><th>Key</th><th>Action</th></tr>
+          <tr><td><kbd>Ctrl-f</kbd></td><td>Prefix (replaces default Ctrl-b)</td></tr>
+          <tr><td><kbd>prefix</kbd> <kbd>h/j/k/l</kbd></td><td>Navigate panes (vim-style)</td></tr>
+          <tr><td><kbd>prefix</kbd> <kbd>o/O</kbd></td><td>Cycle panes (zoom-aware)</td></tr>
+          <tr><td><kbd>F1</kbd></td><td>Toggle pane zoom</td></tr>
+          <tr><td><kbd>F2/F3</kbd></td><td>Previous/next window</td></tr>
+          <tr><td><kbd>prefix</kbd> <kbd>s</kbd></td><td>Session chooser (sorted by recent)</td></tr>
+          <tr><td><kbd>prefix</kbd> <kbd>Escape</kbd></td><td>Enter copy mode</td></tr>
+          <tr><td><kbd>prefix</kbd> <kbd>I</kbd></td><td>Install TPM plugins</td></tr>
+        </table>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>tmux starts without errors</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><kbd>Ctrl-f</kbd> is the prefix — <kbd>Ctrl-b</kbd> should do nothing</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Split a pane (<kbd>prefix</kbd> <kbd>%</kbd>) and navigate between them with <kbd>prefix</kbd> <kbd>h/l</kbd></span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>TPM installed successfully — you saw the "Done" message after pressing <kbd>prefix I</kbd></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neovim -->
+    <div class="section" id="neovim">
+      <div class="section-header" onclick="toggleSection('neovim')">
+        <div class="section-check" onclick="toggleDone(event,'neovim')"></div>
+        <div class="section-title">Neovim</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="step">
+          <div class="step-label">Step 1 — Install Neovim</div>
+          <div class="code-block"><pre><code>brew install neovim</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Create config directory</div>
+          <div class="code-block"><pre><code>mkdir -p ~/.config/nvim</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 3 — Symlink config files</div>
+          <div class="code-block"><pre><code>ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
+ln -s ~/dotfiles/autoload ~/.config/nvim/autoload
+ln -s ~/dotfiles/ftplugin ~/.config/nvim/ftplugin</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 4 — Symlink snippets</div>
+          <p>UltiSnips looks for custom snippets in <code>~/.vim/mysnippets</code>.</p>
+          <div class="code-block"><pre><code>mkdir -p ~/.vim
+ln -s ~/dotfiles/mysnippets ~/.vim/mysnippets</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="note"><strong>Optional:</strong> Create <code>~/.config/nvim/local.vim</code> for machine-specific Neovim settings — it's sourced automatically if present.</div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>nvim</code> opens (it will show errors about missing plugins — that's expected until vim-plug is installed next)</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>:echo $MYVIMRC</code> inside nvim shows <code>/Users/you/.config/nvim/init.vim</code></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- vim-plug -->
+    <div class="section" id="vimplug">
+      <div class="section-header" onclick="toggleSection('vimplug')">
+        <div class="section-check" onclick="toggleDone(event,'vimplug')"></div>
+        <div class="section-title">vim-plug &amp; Plugins</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="step">
+          <div class="step-label">Step 1 — Install yarn</div>
+          <p>The <code>vim-prettier</code> plugin runs <code>yarn install</code> during setup.</p>
+          <div class="code-block"><pre><code>brew install yarn</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Install vim-plug</div>
+          <div class="code-block"><pre><code>sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 3 — Install all plugins</div>
+          <p>This downloads and installs all 27 plugins. It may take a minute — vim-prettier in particular runs a yarn install.</p>
+          <div class="code-block"><pre><code>nvim +PlugInstall +qall</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <h3>Plugin list</h3>
+        <table>
+          <tr><th>Plugin</th><th>Purpose</th></tr>
+          <tr><td><code>nvim-cmp</code> + sources</td><td>Autocompletion engine with LSP, buffer, path sources</td></tr>
+          <tr><td><code>nvim-lspconfig</code></td><td>LSP client configuration</td></tr>
+          <tr><td><code>vim-fugitive</code></td><td>Git integration (<code>&lt;leader&gt;gb</code> blame, <code>&lt;leader&gt;gd</code> diff)</td></tr>
+          <tr><td><code>nerdtree</code></td><td>File tree (<code>&lt;leader&gt;t</code> toggle, <code>&lt;leader&gt;ntf</code> find file)</td></tr>
+          <tr><td><code>fzf</code> + <code>fzf.vim</code></td><td>Fuzzy find files, buffers, tags, text</td></tr>
+          <tr><td><code>vim-prettier</code></td><td>Auto-format with Prettier (<code>&lt;Leader&gt;f</code>)</td></tr>
+          <tr><td><code>vim-polyglot</code></td><td>Syntax highlighting for many languages</td></tr>
+          <tr><td><code>lightline.vim</code></td><td>Minimal status line</td></tr>
+          <tr><td><code>vim-gitgutter</code></td><td>Git diff signs in the gutter</td></tr>
+          <tr><td><code>vim-surround</code></td><td>Surround text objects with quotes, brackets, etc.</td></tr>
+          <tr><td><code>vim-obsession</code></td><td>Save and restore Vim sessions</td></tr>
+          <tr><td><code>comfortable-motion</code></td><td>Physics-based smooth scrolling</td></tr>
+          <tr><td><code>vim-table-mode</code></td><td>ASCII table formatting (<code>&lt;Leader&gt;ta</code> realign)</td></tr>
+          <tr><td><code>vim-move</code></td><td>Move lines/blocks with <kbd>Ctrl</kbd> modifier</td></tr>
+          <tr><td><code>vim-closetag</code></td><td>Auto-close HTML/JSX tags</td></tr>
+          <tr><td><code>vim-bufkill</code></td><td>Kill buffers without closing windows</td></tr>
+          <tr><td><code>vim-pyte</code></td><td>Active color scheme (light)</td></tr>
+        </table>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Open <code>nvim</code> — no errors on startup, color scheme is active</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>:PlugStatus</code> shows all plugins as <code>OK</code></span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><kbd>Space</kbd><kbd>t</kbd> opens the NERDTree file explorer</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Completion popup appears when typing in insert mode</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ag -->
+    <div class="section" id="ag">
+      <div class="section-header" onclick="toggleSection('ag')">
+        <div class="section-check" onclick="toggleDone(event,'ag')"></div>
+        <div class="section-title">The Silver Searcher (ag)</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <p>ag is a fast code search tool used as the default fzf file discovery command and as Neovim's <code>grepprg</code>. The <code>:Ag</code> command and <kbd>Space</kbd><kbd>s</kbd> search in Neovim both depend on it.</p>
+        <div class="step">
+          <div class="code-block"><pre><code>brew install the_silver_searcher</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>ag --version</code> prints a version number</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- fzf -->
+    <div class="section" id="fzf">
+      <div class="section-header" onclick="toggleSection('fzf')">
+        <div class="section-check" onclick="toggleDone(event,'fzf')"></div>
+        <div class="section-title">fzf</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <p>fzf is used throughout the config — file/buffer search in Neovim, interactive git branch switching (<code>gb</code>), tmux session switching (<code>tm</code>), and file opening (<code>fo</code>).</p>
+        <div class="step">
+          <div class="step-label">Step 1 — Install fzf</div>
+          <div class="code-block"><pre><code>brew install fzf</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Install shell integration</div>
+          <p>Generates <code>~/.fzf.zsh</code>, which is sourced by the zshrc.</p>
+          <div class="code-block"><pre><code>$(brew --prefix)/opt/fzf/install --all</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>fzf --version</code> prints a version number</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Inside nvim, <kbd>Space</kbd><kbd>o</kbd> opens the fuzzy file finder</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>The shell alias <code>gb</code> opens an interactive fzf branch picker</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language Servers -->
+    <div class="section" id="lsp">
+      <div class="section-header" onclick="toggleSection('lsp')">
+        <div class="section-check" onclick="toggleDone(event,'lsp')"></div>
+        <div class="section-title">Language Servers</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <p>Two LSP servers are configured in the vimrc Lua block and will auto-attach when you open relevant files.</p>
+        <div class="step">
+          <div class="step-label">Pyright — Python</div>
+          <p>Provides type checking, go-to-definition, and hover docs for Python files.</p>
+          <div class="code-block"><pre><code>npm install -g pyright</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">ESLint LSP — JavaScript / TypeScript</div>
+          <p>Provides in-editor ESLint diagnostics for JS/TS files.</p>
+          <div class="code-block"><pre><code>npm install -g vscode-langservers-extracted</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="note"><strong>Note:</strong> Language servers only activate when the relevant config files (<code>tsconfig.json</code>, <code>.eslintrc</code>, <code>pyrightconfig.json</code>) exist in your project root.</div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Open a <code>.py</code> file in a project — hover over a symbol with <kbd>K</kbd> to see pyright docs</span></li>
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>Open a <code>.ts</code> or <code>.js</code> file — ESLint diagnostics appear as you type</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Git config -->
+    <div class="section" id="gitconfig">
+      <div class="section-header" onclick="toggleSection('gitconfig')">
+        <div class="section-check" onclick="toggleDone(event,'gitconfig')"></div>
+        <div class="section-title">Git Config</div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="step">
+          <div class="step-label">Step 1 — Symlink gitconfig and gitignore</div>
+          <div class="code-block"><pre><code>ln -s ~/dotfiles/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/gitignore ~/.gitignore</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="step">
+          <div class="step-label">Step 2 — Update name and email</div>
+          <div class="code-block"><pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        </div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span><code>git config user.name</code> and <code>git config user.email</code> show your correct details</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- iTerm2 -->
+    <div class="section" id="iterm">
+      <div class="section-header" onclick="toggleSection('iterm')">
+        <div class="section-check" onclick="toggleDone(event,'iterm')"></div>
+        <div class="section-title">iTerm2 Color Theme</div>
+        <span class="section-badge optional">Optional</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <p>A light iTerm2 color profile is included at <code>~/dotfiles/iterm/Light theme.json</code>.</p>
+        <div class="step">
+          <ol>
+            <li>Open <strong>iTerm2</strong> → <strong>Preferences → Profiles → Colors</strong></li>
+            <li>Click <strong>Color Presets…</strong> in the bottom right</li>
+            <li>Select <strong>Import…</strong></li>
+            <li>Navigate to <code>~/dotfiles/iterm/Light theme.json</code> and open it</li>
+            <li>Select the imported preset from <strong>Color Presets…</strong> to apply it</li>
+          </ol>
+        </div>
+        <div class="verify-box">
+          <div class="verify-box-header">✓ Verify</div>
+          <ul class="checklist">
+            <li><div class="checklist-check" onclick="toggleChecklistItem(this)"></div><span>The terminal background and colors match the light theme</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<script>
+  const STORAGE_KEY = 'dotfiles-setup-done';
+
+  function getSavedState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+  }
+
+  function toggleSection(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+
+  function toggleDone(event, id) {
+    event.stopPropagation();
+    const section = document.getElementById(id);
+    const header = section.querySelector('.section-header');
+    const check = section.querySelector('.section-check');
+    const isDone = header.classList.toggle('done');
+    check.textContent = isDone ? '✓' : '';
+    const state = getSavedState();
+    state[id] = isDone;
+    saveState(state);
+    updateProgress();
+    updateNav();
+  }
+
+  function updateProgress() {
+    const state = getSavedState();
+    const sections = document.querySelectorAll('.section');
+    const total = sections.length;
+    const done = Object.values(state).filter(Boolean).length;
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = done + ' of ' + total + ' complete';
+  }
+
+  function updateNav() {
+    const state = getSavedState();
+    const icons = {
+      prerequisites: '🔧', clone: '📁', zsh: '🐚', tmux: '🖥',
+      neovim: '📝', vimplug: '🔌', ag: '🔍', fzf: '⚡',
+      lsp: '🧠', gitconfig: '📋', iterm: '🎨'
+    };
+    document.querySelectorAll('.nav-item a').forEach(link => {
+      const id = link.getAttribute('href').slice(1);
+      link.classList.toggle('done', !!state[id]);
+      link.querySelector('.nav-icon').textContent = state[id] ? '✓' : (icons[id] || '');
+    });
+  }
+
+  function toggleChecklistItem(el) {
+    el.classList.toggle('checked');
+    el.textContent = el.classList.contains('checked') ? '✓' : '';
+  }
+
+  function copyCode(btn) {
+    const pre = btn.previousElementSibling;
+    navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = pre.textContent.trim();
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        document.querySelectorAll('.nav-item a').forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-item a[href="#${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  (function restoreState() {
+    const state = getSavedState();
+    Object.entries(state).forEach(([id, done]) => {
+      if (!done) return;
+      const section = document.getElementById(id);
+      if (!section) return;
+      section.querySelector('.section-header').classList.add('done');
+      section.querySelector('.section-check').textContent = '✓';
+    });
+    updateProgress();
+    updateNav();
+  })();
+</script>
+
+</body>
+</html>
