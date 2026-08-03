@@ -2,4 +2,4 @@
 " 2. Hids deprecated directories 
 " let NERDTreeIgnore=['\(.txt\|.md\)\@<!$[[file]]', '\cdeprecated$[[dir]]']
 
-set nowrap 
+set wrap

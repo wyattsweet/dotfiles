@@ -1,4 +1,5 @@
 set nocompatible
+let g:polyglot_disabled = ['markdown']
 
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
@@ -163,6 +164,7 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=indent,eol,start
 " break lines on word
+set wrap
 set linebreak
 
 " comfortable-motion
@@ -262,6 +264,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 " disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
+let g:table_mode_corner='|'
 
 " set guicursor+=a:ver100-iCurso
 
@@ -322,6 +325,7 @@ nnoremap <Leader>tl :tabmove -1<CR>
 " Move tab to the right
 nnoremap <Leader>tr :tabmove +1<CR>
 nnoremap <Leader>f :Prettier<CR>
+nnoremap <Leader>ta :TableModeRealign<CR>
 
 " Copy to system clipboard
 vnoremap <Leader>y "*y
