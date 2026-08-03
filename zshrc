@@ -38,9 +38,3 @@ source ~/dotfiles/zsh/alias.zsh
 source ~/dotfiles/zsh/functions.zsh
 # vi mode
 source ~/dotfiles/zsh/vim_mode.zsh
-
-# Auto-pull ROOM knowledge base on login.
-# --ff-only: only fast-forward, never create a merge commit (safe if you have local uncommitted work)
-# --quiet: suppress output unless there's an error
-# &: run in background so it doesn't block shell startup
-(cd ~/pg/room-knowledge-base && git pull --ff-only --quiet &) 2>/dev/null

@@ -1,3 +1,5 @@
 *.swp
 tags
 .DS_STORE
+Session.vim
+.claude/
