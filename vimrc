@@ -27,12 +27,6 @@ Plug 'tpope/vim-surround'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'Mizux/vim-colorschemes'
-Plug 'therubymug/vim-pyte'
-"
-"Plug 'SirVer/ultisnips'
-"
-"Plug 'ixru/nvim-markdown'
 Plug 'itspriddle/vim-marked'
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -65,11 +59,10 @@ endif
 
 " syntax enable 
 syntax on
+highlight Normal guibg=NONE ctermbg=NONE
 filetype plugin indent on
 
 let g:python_highlight_all = 1
-" change color theme
-colorscheme pyte
 
 " always use vertical cursor
 " set guicursor+=a:ver100-iCursor
