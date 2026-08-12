@@ -25,7 +25,6 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'branch': 'release/0.x'
   \ }
-Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -90,11 +89,11 @@ lua << EOF
   --   }
   -- })
 
-  -- Set up lspconfig.
+  -- LSP setup (built-in vim.lsp.config, no nvim-lspconfig plugin needed)
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  -- End of nvim-cmp setup
-  require("lspconfig").pyright.setup{}
-  require("lspconfig").eslint.setup{}
+  vim.lsp.config('pyright', { capabilities = capabilities })
+  vim.lsp.config('eslint', { capabilities = capabilities })
+  vim.lsp.enable({'pyright', 'eslint'})
 
   vim.g.clipboard = {
     name = 'OSC 52',
